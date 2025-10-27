@@ -5,5 +5,6 @@
 #include "linkedList.h"
 
 int main(void) {
+    LinkedList MyObj;
     return 0;
 }

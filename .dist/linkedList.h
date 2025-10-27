@@ -6,4 +6,12 @@ struct Node;
 // push_back(void* value)
 // print(void (*func)(void*)) 
 // remove(void* value)
-class LinkedList;
+class LinkedList {
+public:
+    LinkedList();
+    ~LinkedList();
+    void push_front(void* value);
+    void push_back(void* value);
+    void print(void (*func)(void*)) const;
+    bool remove(void* value);
+};

@@ -6,11 +6,11 @@ struct Node {
     Node(void* val) : data(val), next(NULL) {}
 };
 
-class LinkedList {
-private:
-    Node* head = NULL;
 
+class LinkedList {
 public:
+    Node* head = NULL;
+    LinkedList();
     ~LinkedList() {
         while(head) {
             Node* temp = head;
