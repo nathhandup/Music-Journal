@@ -1,3 +1,5 @@
+#ifndef LINKEDLIST
+#define LINKEDLIST
 
 // Node structure
 struct Node;
@@ -13,3 +15,5 @@ public:
     void print(void (*func)(void*)) const;
     bool remove(void* value, bool (*func)(void*, void*));
 };
+
+#define LINKEDLIST

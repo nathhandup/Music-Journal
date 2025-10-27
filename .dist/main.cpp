@@ -2,10 +2,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "linkedList.h"
+#include "LinkedList.h"
+#include "ArtistInfo.h"
 
 int main(void) {
-    LinkedList MyObj;
-    
+    LinkedList MyObj; 
     return 0;
 }
