@@ -22,18 +22,34 @@ bool addName(const std::string line, struct ArtistInfo* obj) {
 }
 
 bool addAlbum(const std::string line, struct ArtistInfo* obj) {
-    std::vector<std::string> objalbums = obj->albums;
-    int size = objalbums.size();
+    int size = obj->albums.size();
     if(size == 0) {
-        objalbums.push_back(line);
+        obj->albums.push_back(line);
         return 1;
     }
     for(int i = 0; i < size; i++) {
-        if(line < objalbums[i]) {
-            objalbums.insert(objalbums.begin() + i, line);
+        if(line < obj->albums[i]) {
+            obj->albums.insert(obj->albums.begin() + i, line);
             break;
             return 1;
         }
+        if(i + 1 == size) {
+            obj->albums.push_back(line);
+        }
+    }
+    return 0;
+}
+
+bool equal(const std::string line, struct ArtistInfo* obj) {
+    if(line == obj->name) {
+        return 1;
+    }
+    return 0;
+}
+
+bool before(struct ArtistInfo* a, struct ArtistInfo* b) {
+    if(a->name < b->name) {
+        return 1;
     }
     return 0;
 }

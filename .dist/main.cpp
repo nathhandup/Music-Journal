@@ -4,21 +4,26 @@
 #include <fstream>
 #include <string>
 #include "artistinfo.hpp"
+#include "linkedlist.hpp"
 
 int main(void) {
+
     ArtistInfo* object = new ArtistInfo;
-    while(1) {
+    // test shell for artistinfo.cpp
+    while(0) {
         std::cout << "addName, addAlbum, print, quit\n";
         std::string intake;
-        std::cin >> intake;
+        std::getline(std::cin, intake);
         if(intake == "addName") {
-            std::cout << "name?\n";
-            std::cin >> intake;
-            addName(intake, object);
+            std::cout << "Name?\n";
+            std::getline(std::cin, intake);
+            if(!addName(intake, object)) {
+                std::cout << "Failed to add name. Already exists\n";
+            }
             printArtistInfo(object);
         } else if(intake == "addAlbum") {
-            std::cout << "name?\n";
-            std::cin >> intake;
+            std::cout << "Album name?\n";
+            std::getline(std::cin, intake);
             addAlbum(intake, object);
             printArtistInfo(object);
         } else if(intake == "print") {
@@ -28,5 +33,13 @@ int main(void) {
         }
     }
     delete object;
+
+    LinkedList* list = new LinkedList;
+    ArtistInfo* obj1 = new ArtistInfo;
+    delete list;
+    delete obj1;
+
+
+
     return 0;
 }
