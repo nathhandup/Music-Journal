@@ -1,0 +1,55 @@
+#include "artistinfo.hpp"
+#include <iostream>
+
+void printArtistInfo(const struct ArtistInfo* obj) {
+    std::cout << obj->name << "\n";
+    std::vector<std::string> objalbums = obj->albums;
+    if(objalbums.size() == 0) {
+        return;
+    } 
+
+    for(int i = 0; i < objalbums.size(); i++) {
+        std::cout << "- " << objalbums[i] << "\n";
+    }
+}
+
+bool addName(const std::string line, struct ArtistInfo* obj) {
+    if(obj->name == "") {
+        obj->name = line;
+        return 1;
+    } 
+    return 0;
+}
+
+bool addAlbum(const std::string line, struct ArtistInfo* obj) {
+    int size = obj->albums.size();
+    if(size == 0) {
+        obj->albums.push_back(line);
+        return 1;
+    }
+    for(int i = 0; i < size; i++) {
+        if(line < obj->albums[i]) {
+            obj->albums.insert(obj->albums.begin() + i, line);
+            break;
+            return 1;
+        }
+        if(i + 1 == size) {
+            obj->albums.push_back(line);
+        }
+    }
+    return 0;
+}
+
+bool equal(const std::string line, struct ArtistInfo* obj) {
+    if(line == obj->name) {
+        return 1;
+    }
+    return 0;
+}
+
+bool before(struct ArtistInfo* a, struct ArtistInfo* b) {
+    if(a->name < b->name) {
+        return 1;
+    }
+    return 0;
+}

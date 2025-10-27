@@ -1,11 +1,45 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "linkedList.h"
+#include "artistinfo.hpp"
+#include "linkedlist.hpp"
 
 int main(void) {
-    LinkedList MyObj;
-    
+
+    ArtistInfo* object = new ArtistInfo;
+    // test shell for artistinfo.cpp
+    while(0) {
+        std::cout << "addName, addAlbum, print, quit\n";
+        std::string intake;
+        std::getline(std::cin, intake);
+        if(intake == "addName") {
+            std::cout << "Name?\n";
+            std::getline(std::cin, intake);
+            if(!addName(intake, object)) {
+                std::cout << "Failed to add name. Already exists\n";
+            }
+            printArtistInfo(object);
+        } else if(intake == "addAlbum") {
+            std::cout << "Album name?\n";
+            std::getline(std::cin, intake);
+            addAlbum(intake, object);
+            printArtistInfo(object);
+        } else if(intake == "print") {
+            printArtistInfo(object);
+        } else if(intake == "quit") {
+            break;
+        }
+    }
+    delete object;
+
+    LinkedList* list = new LinkedList;
+    ArtistInfo* obj1 = new ArtistInfo;
+    delete list;
+    delete obj1;
+
+
+
     return 0;
 }
