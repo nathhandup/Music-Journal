@@ -3,7 +3,7 @@
 
 void printArtistInfo(const struct ArtistInfo* obj) {
     std::cout << obj->name << "\n";
-    std::vector<std::string> objalbums = obj->albums;
+    std::vector<std::string> objalbums = *(obj->albums);
     if(objalbums.size() == 0) {
         return;
     } 
@@ -14,16 +14,16 @@ void printArtistInfo(const struct ArtistInfo* obj) {
 }
 
 bool addName(const std::string string, struct ArtistInfo* obj) {
-    if(obj->name == "") {
-        obj->name = string;
+    if(*(obj->name) == "") {
+        *(obj->name) = string;
         return 1;
     } 
     return 0;
 }
 
 void insert_name(const int point, 
-            std::string name, 
-            std::vector<std::string>* names_pointer) {
+                 const std::string name, 
+                 std::vector<std::string>* names_pointer) {
     std::string temp1;
     std::string temp2;
     std::vector<std::string> names = *names_pointer;
@@ -48,7 +48,7 @@ void insert_name(const int point,
 }
 
 bool addAlbum(const std::string string, struct ArtistInfo* obj) {
-    std::vector<std::string> objalbums = obj->albums;
+    std::vector<std::string> objalbums = *(obj->albums);
     int size = objalbums.size();
     if(size == 0) {
         objalbums[0] = string;

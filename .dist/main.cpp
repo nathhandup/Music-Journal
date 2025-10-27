@@ -1,12 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "LinkedList.h"
 #include "ArtistInfo.h"
 
 int main(void) {
-    ArtistInfo* object;
+    ArtistInfo* object = new ArtistInfo;
     while(1) {
         std::cout << "addName, addAlbum, print, quit\n";
         std::string intake;
@@ -15,17 +15,18 @@ int main(void) {
             std::cout << "name?\n";
             std::cin >> intake;
             addName(intake, object);
-            printArtistInfo(object);
+            //printArtistInfo(object);
         } else if(intake == "addAlbum") {
             std::cout << "name?\n";
             std::cin >> intake;
-            addAlbum(intake, object);
-            printArtistInfo(object);
+            //addAlbum(intake, object);
+            //printArtistInfo(object);
         } else if(intake == "print") {
-            printArtistInfo(object);
+            //printArtistInfo(object);
         } else if(intake == "quit") {
             break;
         }
     }
+    free(object);
     return 0;
 }
