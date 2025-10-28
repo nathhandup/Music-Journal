@@ -1,5 +1,5 @@
-#ifndef LINKEDLIST
-#define LINKEDLIST
+#ifndef LINKEDLIST_HPP
+#define LINKEDLIST_HPP
 #include "artistinfo.hpp"
 
 // Node structure
@@ -14,12 +14,14 @@ class LinkedList {
 public:
     // head with all other nodes stored within
     Node* head;
+    LinkedList();
+    ~LinkedList();
     // pushes value to linked list and preserves ordering according to compare function
     void pushinfo(ArtistInfo* value);
     // prints linked list
     void printlist() const;
     // removes value according to equality function given
-    bool removeinfo(ArtistInfo* value);
+    bool removeinfo(std::string value);
 };
 
 #endif
