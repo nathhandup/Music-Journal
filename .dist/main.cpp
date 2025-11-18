@@ -36,9 +36,10 @@ bool saveList(struct LinkedList* list) {
 
     iterator = list->head;
     for(int i = 0; i < length; i++) {
-        struct ArtistInfo* a = iterator->data;
+        ArtistInfo* a = iterator->data;
         saveString(a->name, out);
         saveVectorOfStrings(a->albums, out);
+        iterator = iterator->next;
     }
     return static_cast<bool>(out);
 }
