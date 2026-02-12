@@ -1,6 +1,6 @@
 #ifndef LINKEDLIST_HPP
 #define LINKEDLIST_HPP
-#include "artistinfo.hpp"
+#include "artistInfo.hpp"
 
 // Node structure
 struct Node {

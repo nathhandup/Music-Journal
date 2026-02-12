@@ -1,6 +1,6 @@
 #include <iostream>
-#include "artistinfo.hpp"
-#include "linkedlist.hpp"
+#include "artistInfo.hpp"
+#include "linkedList.hpp"
 
 LinkedList::LinkedList() {
     head = NULL;
@@ -57,12 +57,10 @@ void LinkedList::printList() const {
         std::cerr << "Error with LinkedList::printList(): List is null\n";
         return;
     } 
-    //std::cout << "---------------------\n";
     while (current && current->data) {
         printArtistInfo(current->data);
         current = current->next;
     }
-    //std::cout << "---------------------\n";
 }
 
 bool LinkedList::removeData(std::string value) {
