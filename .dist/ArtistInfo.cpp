@@ -6,8 +6,6 @@ void printArtistInfo(const struct ArtistInfo* obj) {
         std::cerr << "Error in printArtistInfo: Passed null\n";
         return;
     }
-    std::cout << "\n";
-    std::cout << "|-----------------------------------|\n";
     std::cout << obj->name << "\n";
     std::vector<std::string> objalbums = obj->albums;
     if(objalbums.size() == 0) {
@@ -19,7 +17,6 @@ void printArtistInfo(const struct ArtistInfo* obj) {
         std::cout << "- " << objalbums[i] << "\n";
     }
     std::cout << "|-----------------------------------|\n";
-    std::cout << "\n";
 }
 
 bool addName(const std::string line, struct ArtistInfo* obj) {

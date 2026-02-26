@@ -15,27 +15,28 @@ LinkedList::~LinkedList() {
         delete temp;
     }
 }
-void LinkedList::pushData(ArtistInfo* value) {
+
+bool LinkedList::pushData(ArtistInfo* value) {
     if(!value) {
         std::cerr << "Error with LinkedList::pushData(): Passed null\n";
-        return;
+        return 0;
     }
     // Case 1: empty list
     if (head == NULL) {
         head = new Node(value);
-        return;
+        return 1;
     }
 
     // Case 2: new node should go before the head
     if (before(value, head->data)) {
         if(value->name == head->data->name) {
             std::cerr << "Error in LinkedList::pushData(): Name Already Exits\n";
-            return;
+            return 0;
         }
         Node* newNode = new Node(value);
         newNode->next = head;
         head = newNode;
-        return;
+        return 1;
     }
 
     // Case 3: find proper place to insert in the middle or at end
@@ -45,35 +46,29 @@ void LinkedList::pushData(ArtistInfo* value) {
     }
     if(value->name == current->data->name) {
         std::cerr << "Error in LinkedList::pushData(): Name Already Exits\n";
-        return;
+        return 0;
     }
     Node* newNode = new Node(value);
     newNode->next = current->next;
     current->next = newNode;
-}
-
-bool LinkedList::createData(LinkedList* list, std::string name) {
-    if (name.length() == 0 || list == NULL) {
-        std::cerr << "Error with LinkedList::createData(): Name is not valid\n";
-        return 0;
-    }
-    struct ArtistInfo* temp = new ArtistInfo;
-    addName(name, temp);
-    list->pushData(temp);
     return 1;
 }
-
 
 void LinkedList::printList() const {
     Node* current = head;
     if(!head || !head->data) {
+        std::cout << "\n";
         std::cerr << "Error with LinkedList::printList(): List is null\n";
+        std::cout << "\n";
         return;
     } 
+    std::cout << "\n";
+    std::cout << "|-----------------------------------|\n";
     while (current && current->data) {
         printArtistInfo(current->data);
         current = current->next;
     }
+    std::cout << "\n";
 }
 
 bool LinkedList::removeData(std::string value) {

@@ -16,10 +16,7 @@ public:
     LinkedList();
     ~LinkedList();
     // pushes value to linked list and preserves ordering
-    void pushData(ArtistInfo* value);
-    // creates an ArtistInfo object with the given name and adds it to the list, 
-    // returns success or failure depending on length of name. 
-    bool createData(LinkedList* list, std::string name);
+    bool pushData(ArtistInfo* value);
     // prints linked list
     void printList() const;
     // removes value, or does nothing
