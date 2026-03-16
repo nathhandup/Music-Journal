@@ -2,7 +2,7 @@
 #define LINKEDLIST_HPP
 #include "artistInfo.hpp"
 
-// Node structure
+/* Node structure for linked list of ArtistInfo structures */
 struct Node {
     ArtistInfo* data;
     Node* next;
@@ -11,17 +11,20 @@ struct Node {
 
 class LinkedList {
 public:
-    // head with all other nodes stored within
+    // Head node with all other nodes stored within
     Node* head;
+    // Constructor
     LinkedList();
+    // Deconstructor
     ~LinkedList();
-    // pushes value to linked list and preserves ordering
+    // Pushes value to linked list and preserves ordering
     bool pushData(ArtistInfo* value);
-    // prints linked list
+    // Prints entire linked list
     void printList() const;
-    // removes value, or does nothing
+    // Removes value and returns true if successful,
+    // or does nothing and returns false
     bool removeData(std::string value);
-    // pulls data. returns null if not found
+    // Pulls data that matches value, returns null if not found
     struct ArtistInfo* pullData(std::string value);
 };
 

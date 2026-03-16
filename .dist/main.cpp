@@ -1,15 +1,24 @@
+/*******************************************************************
+ * File Name   : music-journal
+ * Description : c++ terminal music journal
+ * Author      : nathhandup
+ *******************************************************************/
+
+/* Standard Includes */
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <string>
 
+/* File dependencies */
 #include "artistInfo.hpp"
 #include "linkedList.hpp"
 #include "saveFeatures.hpp"
 #include "terminalHelpers.hpp"
 
 int main(void) {
+    /* Load list from .bin file */
     LinkedList* list = loadList();
     while(1) {
         std::cout << "Use one of the following commands:  ";
@@ -34,6 +43,7 @@ int main(void) {
             break;
         }
     }
+    /* Save list to .bin file then remove from heap */
     saveList(list);
     delete list;
     return 0;
